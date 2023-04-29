@@ -35,6 +35,14 @@ public class InitHandler implements Initializer {
                         () -> MinecraftClient.getInstance().setScreen(new HudEditScreen(null)))
                 )
         );
+        HotkeyHandler.getInstance().add(
+                KronHUD.MOD_ID,
+                "hidehud",
+                () -> List.of(new BasicHotkey(
+                        ConfigHandler.getInstance().hideHud.getValue(),
+                        () -> HudManager.getInstance().toggleHidden())
+                )
+        );
     }
 
 }

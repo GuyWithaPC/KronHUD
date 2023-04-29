@@ -47,9 +47,14 @@ public class ConfigHandler extends ModConfig {
             new HotkeySettings(false, false, true, new ArrayList<>(List.of(GLFW.GLFW_KEY_RIGHT_SHIFT)), PlayerContextCheck.getDefault())
     );
 
+    public final HotkeySettingsOption hideHud = new HotkeySettingsOption(
+            "H","option.kronhud.general.hidehud","option.kronhud.general.hidehud.info",
+            new HotkeySettings(false, false, true, new ArrayList<>(List.of(GLFW.GLFW_KEY_H)), PlayerContextCheck.getDefault())
+    );
+
     public final OptionSection general = new OptionSection(
             "general", "option.section.general", "option.section.general.info",
-            List.of(editHud)
+            List.of(editHud,hideHud)
     );
 
     @Override

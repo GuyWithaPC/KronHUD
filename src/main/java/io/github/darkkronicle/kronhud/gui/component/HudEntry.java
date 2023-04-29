@@ -7,6 +7,10 @@ public interface HudEntry extends Identifiable, Configurable, Positionable {
 
     boolean isEnabled();
 
+    boolean isHidden();
+
+    void setHidden(boolean value);
+
     void setEnabled(boolean value);
 
     default boolean tickable() {

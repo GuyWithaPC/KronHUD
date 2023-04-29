@@ -30,6 +30,8 @@ public abstract class AbstractHudEntry extends DrawUtil implements HudEntry {
     private DrawPosition truePosition = null;
     private DrawPosition renderPosition;
 
+    private boolean isHidden = false;
+
     @Setter @Getter
     protected int width;
     @Setter @Getter
@@ -220,6 +222,15 @@ public abstract class AbstractHudEntry extends DrawUtil implements HudEntry {
     @Override
     public void setEnabled(boolean value) {
         enabled.setValue(value);
+    }
+
+    @Override
+    public boolean isHidden() {
+        return isHidden;
+    }
+    @Override
+    public void setHidden(boolean value) {
+        isHidden = value;
     }
 
 }

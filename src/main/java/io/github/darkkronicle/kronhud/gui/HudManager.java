@@ -25,6 +25,8 @@ public class HudManager {
     private final Map<Identifier, HudEntry> entries;
     private final MinecraftClient client;
 
+    private boolean isHidden = false;
+
     private HudManager() {
         this.entries = new LinkedHashMap<>();
         client = MinecraftClient.getInstance();
@@ -75,7 +77,7 @@ public class HudManager {
     public void render(MatrixStack matrices, float delta) {
         if (!(client.currentScreen instanceof HudEditScreen) && !client.options.debugEnabled) {
             for (HudEntry hud : getEntries()) {
-                if (hud.isEnabled()) {
+                if (hud.isEnabled() && !hud.isHidden()) {
                     hud.render(matrices, delta);
                 }
             }
@@ -87,6 +89,13 @@ public class HudManager {
             if (hud.isEnabled()) {
                 hud.renderPlaceholder(matrices, delta);
             }
+        }
+    }
+
+    public void toggleHidden() {
+        isHidden = !isHidden;
+        for (HudEntry hud : getEntries()) {
+            hud.setHidden(isHidden);
         }
     }
 
